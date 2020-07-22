@@ -7,7 +7,7 @@ $win = (isset($_SESSION["win"])) ? $_SESSION["win"] : false;
 $TITLE = 'TIC-TAC-TOE';
 include_once 'handlers/header.php';
 echo "<form action='handlers/handler.php' method='post'>
-        <div style='width: 306px; height: 520px;'>";
+        <div style='width: 306px; height: 350px;'>";
 include_once 'handlers/globals.php';
 include_once 'handlers/func_helpers.php';
 $checker++;
@@ -83,10 +83,10 @@ $_SESSION["win"] = $win;
 
 for ($i = 0; $i < 3; $i++) {
         for ($j = 0; $j < 3; $j++) {
-                echo "<input type='radio' id='$i-$j' value='$i-$j' name='Selector'><label for='$i-$j'>Cell: x=$j, y=$i</label><br>";
+                echo "<input type='radio' id='$i-$j' value='$i-$j' name='Selector' style='display: none'><br>";
         }
 }
-if (!$_SESSION["win"]) echo "<input type='submit' value='Походить'/>";
+if (!$_SESSION["win"]) echo "<input type='submit' value='Походить'/ style='margin-top: 10px'>";
 echo "</form></div>";
 echo "<form action='handlers/destruction.php' method='post'><input type='submit' value='Начать заново' /></form>";
 include_once 'handlers/footer.php';
