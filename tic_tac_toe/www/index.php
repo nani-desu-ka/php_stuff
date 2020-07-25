@@ -4,24 +4,10 @@ session_start();
 $checker = (isset($_SESSION["checker"])) ? $_SESSION["checker"] : 0;
 $win = (isset($_SESSION["win"])) ? $_SESSION["win"] : false;
 
-$TITLE = 'TIC-TAC-TOE';
-include_once 'handlers/header.php';
-echo "<form action='handlers/handler.php' method='post'>
-        <div style='width: 306px; height: 350px;'>";
-include_once 'handlers/globals.php';
-include_once 'handlers/func_helpers.php';
-$checker++;
-$_SESSION["checker"] = $checker;
+$back_color = "white";
+if ($_SESSION["win"] == true) $back_color = ($_SESSION["turn"] % 2 == 0) ? "#92F58D" : "#FD3F49";
 
-/*
-* Вывод полей
-*/
-
-for ($i = 0; $i < 3; $i++) {
-        for ($j = 0; $j < 3; $j++) {
-                $_SESSION["field"][$i][$j]->print_cell();
-        }
-}
+include_once 'handlers/init.php';
 
 /*
 * Проверка на выигрыш
@@ -75,7 +61,48 @@ while ($i != -1 || $j != 3) {
         $i--;
         $j++;
 }
-$_SESSION["win"] = $win;
+if ($win == true && $_SESSION["win"] == false) {
+        $_SESSION["win"] = $win;
+        header("Refresh:0;url=index.php");
+}
+else $_SESSION["win"] = $win;
+
+
+
+
+include_once 'handlers/header.php';
+$checker++;
+$_SESSION["checker"] = $checker;
+
+/*
+* Текущий игрок
+*/
+
+if ($_SESSION["win"]) {
+        if ($_SESSION["turn"] % 2 == 0)  {
+                echo "<div class='player_cell'><div class='helper_player_cell_o'></div></div>";
+
+        } else {
+                echo "<div class='player_cell'><div class='helper_player_cell_x_small'></div></div>";
+        }
+} else {
+        if ($_SESSION["turn"] % 2 == 0)  {
+                echo "<div class='player_cell'><div class='helper_player_cell_x_small'></div></div>";
+        } else {
+                echo "<div class='player_cell'><div class='helper_player_cell_o'></div></div>";
+        }
+}
+
+/*
+* Вывод полей
+*/
+
+echo "<div class='field-form'><form action='handlers/handler.php' method='post' style='min-height: 320px;'>";
+for ($i = 0; $i < 3; $i++) {
+        for ($j = 0; $j < 3; $j++) {
+                $_SESSION["field"][$i][$j]->print_cell();
+        }
+}
 
 /*
 * Селекторы
@@ -86,8 +113,8 @@ for ($i = 0; $i < 3; $i++) {
                 echo "<input type='radio' id='$i-$j' value='$i-$j' name='Selector' style='display: none'><br>";
         }
 }
-if (!$_SESSION["win"]) echo "<input type='submit' value='Походить'/ style='margin-top: 10px'>";
-echo "</form></div>";
-echo "<form action='handlers/destruction.php' method='post'><input type='submit' value='Начать заново' /></form>";
+if (!$_SESSION["win"]) echo "<input type='submit' class='field-form-button' style='margin-top: 170px' value='сделать ход'/>";
+echo "</form>";
+echo "<form action='handlers/destruction.php' method='post' ><input type='submit' class='field-form-button' value='Начать заново' /></form></div>";
 include_once 'handlers/footer.php';
 ?>

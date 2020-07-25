@@ -1,0 +1,111 @@
+body, html {
+        height: 100%;
+        /* min-width: 1350px; */
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        overflow: hidden;
+        /* background: white; */
+        /* background: linear-gradient(to bottom, #92F58D 10%, #FDF4E3 20%, #FDF4E3 50%, #FDF4E3 70%, #FD3F49 90%); */
+}
+
+.field-form {
+    box-sizing: border-box;
+    width: 400px;
+    background: #fff;
+    padding: 40px 40px 40px 45px;
+    box-shadow: 0 3px 35px rgba(0, 0, 0, .3);
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2px;
+}
+
+.field-form-button {
+    background: #FF0700;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 240px;
+    margin: 30px auto 0;
+    border-radius: 5px;
+    height: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    outline: none;
+    transition: .3s;
+    padding: 2px 0 0 0;
+}
+
+.player_cell {
+        margin-top: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 5px;
+        height: 50px;
+        width: 50px;
+        border: 3px solid;
+}
+
+/* .helper_player_cell_x {
+        margin-top: -15px;
+        margin-left: 5px;
+        font-size: 70px;
+        font-weight: 200;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+} */
+
+.helper_player_cell_x_big {
+        background: black;
+        height: 100px;
+        width: 3px;
+        position: relative;
+        left: 45px;
+         transform: rotate(45deg);
+}
+
+.helper_player_cell_x_big:after {
+        content: "";
+        height: 3px;
+        width: 100px;
+        background: black;
+        position: absolute;
+        left: -47px;
+        top: 49px;
+}
+
+.helper_player_cell_x_small {
+        background: black;
+        height: 50px;
+        width: 3px;
+        position: relative;
+        left: 24px;
+         transform: rotate(45deg);
+}
+
+.helper_player_cell_x_small:after {
+        content: "";
+        height: 3px;
+        width: 50px;
+        background: black;
+        position: absolute;
+        left: -24px;
+        top: 23px;
+}
+
+.helper_player_cell_o {
+        margin: 4px;
+        border-radius: 5px;
+        height: 35px;
+        width: 35px;
+        border: 3px solid;
+        border-radius: 50%;
+}
